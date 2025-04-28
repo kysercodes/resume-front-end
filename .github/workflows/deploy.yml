@@ -1,0 +1,29 @@
+name: Deploy Frontend to S3
+
+on:
+  push:
+    branches:
+      - main  # or master, depending on your repo
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Upload files to S3
+        run: |
+          aws s3 sync ./ s3://antoine-kyser-resume-site \
+            --exclude "*" \
+            --include "index.html" \
+            --include "js/*" \
+            --delete
