@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
   fetch('https://rlnauei8x0.execute-api.us-east-1.amazonaws.com/count')
       .then(response => response.json())
       .then(data => {
-        console.log(data.body)
+        console.log(data)
           // const parsed = JSON.parse(data.body); // <-- parse the body string
           // const count = parsed.visitor_count;   // <-- now this is a real number
           // counter.textContent = count;
