@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
           // const count = parsed.visitor_count;   // <-- now this is a real number
           // counter.textContent = count;
           // console.log("Visitor count:", count);
+          counter.textContent = data.visitor_count;
       })
       .catch(error => {
           console.error('Error fetching data:', error);
