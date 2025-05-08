@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(data => {
         console.log(data.body)
           // const parsed = JSON.parse(data.body); // <-- parse the body string
-          const count = parsed.visitor_count;   // <-- now this is a real number
+          // const count = parsed.visitor_count;   // <-- now this is a real number
           counter.textContent = count;
           console.log("Visitor count:", count);
       })
