@@ -19,21 +19,37 @@
 //     console.log('Element clicked!');
 //   });
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const counter = document.getElementById('counter');
+//   document.addEventListener('DOMContentLoaded', function() {
+//     const counter = document.getElementById('counter');
     
-    fetch('https://rlnauei8x0.execute-api.us-east-1.amazonaws.com/count')
-    .then(response => response.json())
-    .then(data => {
-        let count = parseInt(data.count)
-        counter.textContent = count;
-      console.log(parseInt(data.count));
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
+//     fetch('https://rlnauei8x0.execute-api.us-east-1.amazonaws.com/count')
+//     .then(response => response.json())
+//     .then(data => {
+//         let count = parseInt(data.count)
+//         counter.textContent = count;
+//       console.log(parseInt(data.count));
+//     })
+//     .catch(error => {
+//       console.error('Error fetching data:', error);
+//     });
 
+// });
+document.addEventListener('DOMContentLoaded', function () {
+  const counter = document.getElementById('counter');
+
+  fetch('https://rlnauei8x0.execute-api.us-east-1.amazonaws.com/count')
+      .then(response => response.json())
+      .then(data => {
+          const parsed = JSON.parse(data.body); // <-- parse the body string
+          const count = parsed.visitor_count;   // <-- now this is a real number
+          counter.textContent = count;
+          console.log("Visitor count:", count);
+      })
+      .catch(error => {
+          console.error('Error fetching data:', error);
+      });
 });
+
 // const url =
 
 // async function getData() {
